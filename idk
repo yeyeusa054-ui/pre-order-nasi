@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Pre-Order Nasi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f2f6ee;--card:#ffffff;--ink:#14231a;--muted:#5d6f63;--line:#d3ddd0;--band:#1f4d36;--kunyit:#f4b400;--kunyit-ink:#2a2000;--btn:#1f4d36;--btn-ink:#ffffff;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1812;--card:#16251c;--ink:#eaf3ea;--muted:#9db3a3;--line:#294034;--band:#173a29;--btn:#ffc933;--btn-ink:#2a2000;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0e1812;--card:#16251c;--ink:#eaf3ea;--muted:#9db3a3;--line:#294034;--band:#173a29;--btn:#ffc933;--btn-ink:#2a2000;color-scheme:dark}
+*{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+h1,h2,.name{font-family:"Bricolage Grotesque",system-ui,sans-serif}
+.band{background:var(--band);color:#fff;padding:30px 20px 34px}
+.band div{max-width:560px;margin:0 auto}
+h1{font-size:2.6rem;line-height:1;font-weight:800;margin:0 0 12px;letter-spacing:-.02em}
+h1 em{font-style:normal;color:var(--kunyit)}
+.lead{margin:0;max-width:34ch;color:#d6e7da}
+main{max-width:560px;margin:0 auto;padding:8px 20px 130px}
+h2{font-size:1.35rem;font-weight:800;margin:30px 0 4px}
+.sub{margin:0 0 6px;color:var(--muted);font-size:14px}
+.row{display:flex;align-items:center;gap:12px;padding:14px 0 14px 14px;border-bottom:1px solid var(--line);border-left:6px solid var(--c,var(--line))}
+.info{flex:1;min-width:0}
+.name{font-weight:700;font-size:1.08rem}
+.price{color:var(--muted);font-size:14px}
+.step{display:flex;align-items:center;gap:10px}
+.step button{width:40px;height:40px;border-radius:99px;border:2px solid var(--btn);background:transparent;color:var(--btn);font-size:22px;line-height:1;font-weight:700;cursor:pointer}
+.step button.plus{background:var(--btn);color:var(--btn-ink)}
+.step button:focus-visible,.btn:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid var(--kunyit);outline-offset:2px}
+.step b{min-width:24px;text-align:center;font-variant-numeric:tabular-nums;font-size:1.1rem}
+.stok{display:inline-block;margin-left:8px;padding:0 9px;border-radius:99px;background:var(--kunyit);color:var(--kunyit-ink);font-size:12px;font-weight:700}
