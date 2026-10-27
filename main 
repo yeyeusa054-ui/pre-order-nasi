@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Pre-Order Nasi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f2f6ee;--card:#ffffff;--ink:#14231a;--muted:#5d6f63;--line:#d3ddd0;--band:#1f4d36;--kunyit:#f4b400;--kunyit-ink:#2a2000;--btn:#1f4d36;--btn-ink:#ffffff;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1812;--card:#16251c;--ink:#eaf3ea;--muted:#9db3a3;--line:#294034;--band:#173a29;--btn:#ffc933;--btn-ink:#2a2000;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0e1812;--card:#16251c;--ink:#eaf3ea;--muted:#9db3a3;--line:#294034;--band:#173a29;--btn:#ffc933;--btn-ink:#2a2000;color-scheme:dark}
+*{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+h1,h2,.name{font-family:"Bricolage Grotesque",system-ui,sans-serif}
+.band{background:var(--band);color:#fff;padding:30px 20px 34px}
+.band div{max-width:560px;margin:0 auto}
+h1{font-size:2.6rem;line-height:1;font-weight:800;margin:0 0 12px;letter-spacing:-.02em}
+h1 em{font-style:normal;color:var(--kunyit)}
+.lead{margin:0;max-width:34ch;color:#d6e7da}
+main{max-width:560px;margin:0 auto;padding:8px 20px 130px}
+h2{font-size:1.35rem;font-weight:800;margin:30px 0 4px}
+.sub{margin:0 0 6px;color:var(--muted);font-size:14px}
+.row{display:flex;align-items:center;gap:12px;padding:14px 0 14px 14px;border-bottom:1px solid var(--line);border-left:6px solid var(--c,var(--line))}
+.info{flex:1;min-width:0}
+.name{font-weight:700;font-size:1.08rem}
+.price{color:var(--muted);font-size:14px}
+.step{display:flex;align-items:center;gap:10px}
+.step button{width:40px;height:40px;border-radius:99px;border:2px solid var(--btn);background:transparent;color:var(--btn);font-size:22px;line-height:1;font-weight:700;cursor:pointer}
+.step button.plus{background:var(--btn);color:var(--btn-ink)}
+.step button:focus-visible,.btn:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid var(--kunyit);outline-offset:2px}
+.step b{min-width:24px;text-align:center;font-variant-numeric:tabular-nums;font-size:1.1rem}
+.stok{display:inline-block;margin-left:8px;padding:0 9px;border-radius:99px;background:var(--kunyit);color:var(--kunyit-ink);font-size:12px;font-weight:700}
+.stok.hide{display:none}
+fieldset{border:0;padding:0;margin:0 0 14px;min-width:0}
+legend{font-weight:600;font-size:14px;padding:0;margin-bottom:8px}
+.opt{display:flex;align-items:center;gap:10px;padding:12px 14px;border:1.5px solid var(--line);border-radius:12px;margin:0 0 8px;font-size:16px;cursor:pointer}
+.opt:has(input:checked){border-color:var(--btn);background:var(--bg)}
+.opt input{width:20px;height:20px;accent-color:var(--btn)}
+.stok.out{background:var(--line);color:var(--muted)}
+.step button:disabled{opacity:.35;cursor:not-allowed}
+.wajib{background:var(--kunyit);color:var(--kunyit-ink);border-radius:10px;padding:10px 12px;font-weight:700;font-size:14px;margin:12px 0}
+.nota{background:var(--card);border:1px dashed var(--ink);border-radius:4px;padding:8px 18px}
+.line{display:flex;justify-content:space-between;gap:12px;padding:7px 0}
+.line.total{border-top:2px solid var(--ink);margin-top:6px;padding-top:12px;font-weight:800;font-size:1.2rem}
+.note{font-size:13px;color:var(--muted);margin:8px 0}
+.form{background:var(--card);border-radius:20px;padding:18px;border:1px solid var(--line)}
+label{display:block;font-weight:600;font-size:14px;margin-bottom:14px}
+input[type=text],textarea{display:block;width:100%;margin-top:6px;padding:12px;border-radius:12px;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);font:inherit}
+.pay{display:flex;justify-content:space-between;align-items:baseline;font-weight:700;margin-top:4px}
+.pay b{font-size:1.6rem;font-family:"Bricolage Grotesque",system-ui,sans-serif}
+.qris{display:block;width:100%;max-width:320px;margin:10px auto;border-radius:12px;border:1px solid var(--line);background:#fff}
+.chk{display:flex;gap:10px;align-items:center;margin:14px 0}
+.chk input{width:22px;height:22px;accent-color:var(--btn)}
+.btn{display:block;width:100%;text-align:center;padding:14px;border-radius:99px;background:var(--btn);color:var(--btn-ink);font:inherit;font-weight:800;border:2px solid var(--btn);text-decoration:none;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line);margin-top:10px;font-weight:600}
+.btn[aria-disabled="true"]{opacity:.45}
+.hot{background:var(--kunyit);color:var(--kunyit-ink);padding:6px 10px;border-radius:8px;font-weight:700}
+.bar{position:fixed;left:0;right:0;bottom:0;background:var(--band);color:#fff;padding:12px 20px calc(12px + env(safe-area-inset-bottom,0px));display:flex;align-items:center;gap:14px;z-index:5}
+.bar[hidden]{display:none}
+.bar .t{flex:1;line-height:1.2}
+.bar small{color:#cfe3d4}
+.bar b{font-size:1.25rem}
+.bar .btn{width:auto;padding:12px 22px;background:var(--kunyit);border-color:var(--kunyit);color:var(--kunyit-ink)}
+</style>
+</head>
+<body>
+<div class="band"><div>
+<h1>Nasi hangat,<br><em>pesan dulu.</em></h1>
+<p class="lead">Pilih menu, pilih cara bayar, lalu kirim pesananmu ke WhatsApp.</p>
+</div></div>
+<main>
+<h2>Nasi Kuning &amp; Nasi Goreng</h2>
+<p class="sub">Rp12.000 per porsi</p>
+<div id="menu1"></div>
+
+<h2>Nasi Cokot</h2>
+<p class="sub">Rp6.000 per porsi, semua varian harganya sama</p>
+<div id="cokot"></div>
+
+<h2>Pesananmu</h2>
+<p class="sub" id="tgl"></p>
+<div class="nota" id="sum"></div>
+
+<h2 id="checkout">Bayar &amp; kirim</h2>
+<div class="form">
+<label>Nama pemesan<input type="text" id="nama" autocomplete="name" placeholder="Nama kamu"></label>
+<label>Catatan (opsional)<textarea id="cat" rows="2" placeholder="Contoh: sambal dipisah"></textarea></label>
+<fieldset><legend>Cara bayar</legend>
+<label class="opt"><input type="radio" name="mode" value="qris" checked> Bayar sekarang via QRIS</label>
+<label class="opt"><input type="radio" name="mode" value="cod"> Bayar di tempat</label>
+</fieldset>
+<div class="pay"><span id="paylbl">Total bayar</span><b id="pay">Rp0</b></div>
+<div id="qrisbox"><img class="qris" alt="Kode QRIS pembayaran Nasi cokot" src="qris.jpg">
+<p class="note">Scan dengan e-wallet atau m-banking, lalu bayar sesuai total. Untuk membuka dari galeri, screenshot gambar QRIS ini.</p>
+<p class="wajib">Wajib memberikan screenshot bukti pembayaran.</p>
+<label class="chk"><input type="checkbox" id="paid"> Saya sudah bayar sesuai total</label>
+</div>
+<a class="btn" id="send" role="button" aria-disabled="true" target="_blank" rel="noopener">Kirim pesanan ke WhatsApp</a>
+<p class="note" id="hint"></p>
+<button class="btn ghost" id="copy" type="button">Salin teks pesanan</button>
+<p class="note">Kalau WhatsApp tidak terbuka, tekan “Salin teks pesanan” lalu kirim sendiri ke +62 877-3122-4836.</p>
+<p class="note" id="proofnote">Lampirkan bukti pembayaran saat WhatsApp terbuka.</p>
+</div>
+<section id="admin" hidden>
+<h2>Rekap pesanan</h2>
+<p class="sub">Tempel pesan pesanan dari WhatsApp, boleh banyak sekaligus.</p>
+<div class="form">
+<textarea id="paste" rows="6" placeholder="Tempel pesan di sini"></textarea>
+<div class="nota" id="rekap" style="margin-top:12px"></div>
+</div>
+</section>
+</main>
+
+<div class="bar" id="bar" hidden>
+<div class="t"><small id="bc"></small><div><b id="bt">Rp0</b></div></div>
+<button class="btn" id="go" type="button">Bayar &amp; kirim</button>
+</div>
+
+<script>
+const WA="6287731224836"; // nomor WhatsApp penjual
+const STOCK={kuning:null,goreng:null,rica:null,kecap:null,sosis:null}; // sisa porsi per menu, null = tanpa batas
+const LINES=[
+{id:"kuning",name:"Nasi Kuning",price:12000,box:"menu1",c:"#f4b400"},
+{id:"goreng",name:"Nasi Goreng",price:12000,box:"menu1",c:"#e0732b"},
+{id:"rica",name:"Nasi Cokot Rica",label:"Rica",price:6000,box:"cokot",c:"#c8321f"},
+{id:"kecap",name:"Nasi Cokot Kecap",label:"Kecap",price:6000,box:"cokot",c:"#6b4423"},
+{id:"sosis",name:"Nasi Cokot Kecap Sosis",label:"Kecap Sosis",price:6000,box:"cokot",c:"#c2457a"}];
+const q={};LINES.forEach(l=>q[l.id]=0);
+const $=id=>document.getElementById(id);
+const rp=n=>"Rp"+n.toLocaleString("id-ID");
+LINES.forEach(l=>{
+ const d=document.createElement("div");d.className="row";d.style.setProperty("--c",l.c);
+ d.innerHTML=`<div class="info"><div class="name">${l.label||l.name}</div><div class="price">${rp(l.price)}/pcs<span class="stok hide" id="s-${l.id}"></span></div></div><div class="step"><button type="button" data-id="${l.id}" data-d="-1" aria-label="Kurangi ${l.name}">−</button><b id="n-${l.id}">0</b><button class="plus" type="button" data-id="${l.id}" data-d="1" aria-label="Tambah ${l.name}">+</button></div>`;
+ $(l.box).appendChild(d);
+});
+document.addEventListener("click",e=>{
+ const b=e.target.closest("[data-d]");if(!b)return;
+ const id=b.dataset.id,st=STOCK[id],mx=st==null?99:Math.min(99,st);
+ q[id]=Math.max(0,Math.min(mx,q[id]+Number(b.dataset.d)));update();
+});
+const tgl=()=>new Date().toLocaleString("id-ID",{weekday:"long",day:"numeric",month:"long",year:"numeric",hour:"2-digit",minute:"2-digit"});
+const tglD=()=>new Date().toLocaleDateString("id-ID",{weekday:"long",day:"numeric",month:"long",year:"numeric"});
+function update(){
+ $("tgl").textContent="Tanggal pemesanan: "+tglD();
+ let tot=0,cnt=0,rows="",msg=[];
+ LINES.forEach(l=>{
+  const st=STOCK[l.id],mx=st==null?99:Math.min(99,st);
+  if(q[l.id]>mx)q[l.id]=mx;
+  const n=q[l.id];$("n-"+l.id).textContent=n;
+  $("n-"+l.id).nextElementSibling.disabled=n>=mx;
+  const sl=$("s-"+l.id);sl.textContent=st==null?"":st<=0?"Habis":"Sisa "+st;sl.className="stok"+(st==null?" hide":st<=0?" out":"");
+  if(n){const s=n*l.price;tot+=s;cnt+=n;
+   rows+=`<div class="line"><span>${n} × ${l.name}</span><span>${rp(s)}</span></div>`;
+   msg.push(`- ${l.name} x${n} = ${rp(s)}`);}
+ });
+ $("sum").innerHTML=cnt?rows+`<div class="line total"><span>Total</span><span>${rp(tot)}</span></div>`:`<p class="note" style="padding:8px 0">Belum ada pesanan. Tambahkan menu di atas.</p>`;
+ $("pay").textContent=rp(tot);$("bt").textContent=rp(tot);$("bc").textContent=cnt+" porsi";
+ $("bar").hidden=!cnt;
+ const cod=document.querySelector('input[name="mode"]:checked').value==="cod";
+ $("qrisbox").hidden=cod;$("proofnote").hidden=cod;$("paylbl").textContent=cod?"Bayar di tempat":"Total bayar";
+ const nama=$("nama").value.trim(),paid=$("paid").checked,ok=cnt>0&&nama&&(cod||paid);
+ const text=`Halo, saya mau pre-order:\n${msg.join("\n")}\nTotal: ${rp(tot)}\n\nNama: ${nama}\nTanggal pemesanan: ${tgl()}\nCatatan: ${$("cat").value.trim()||"-"}\nPembayaran: ${cod?"bayar di tempat":"sudah bayar via QRIS (bukti pembayaran saya lampirkan)"}`;
+ const a=$("send");
+ if(ok){a.href=`https://wa.me/${WA}?text=${encodeURIComponent(text)}`;a.removeAttribute("aria-disabled");}
+ else{a.removeAttribute("href");a.setAttribute("aria-disabled","true");}
+ $("hint").className="note";$("hint").textContent=ok?"":!cnt?"Pilih menu dulu.":!nama?"Isi nama pemesan.":"Centang konfirmasi pembayaran.";
+ window.__text=text;
+}
+["nama","cat","paid"].forEach(id=>$(id).addEventListener("input",update));
+document.querySelectorAll('input[name="mode"]').forEach(r=>r.addEventListener("change",update));
+$("go").onclick=()=>{const t=$("checkout");try{t.scrollIntoView({behavior:"smooth",block:"start"});}catch(e){t.scrollIntoView();}};
+$("send").addEventListener("click",e=>{
+ if($("send").getAttribute("aria-disabled")!=="true"){update();return;}
+ e.preventDefault();
+ $("hint").className="note hot";
+ const f=!Object.values(q).some(Boolean)?$("menu1"):!$("nama").value.trim()?$("nama"):$("paid");
+ f.scrollIntoView({block:"center"});f.focus();
+});
+$("copy").onclick=async()=>{
+ update();const b=$("copy"),t=window.__text||"";
+ try{await navigator.clipboard.writeText(t);}
+ catch(e){const x=document.createElement("textarea");x.value=t;document.body.appendChild(x);x.select();try{document.execCommand("copy");}catch(_){}x.remove();}
+ b.textContent="Tersalin";setTimeout(()=>b.textContent="Salin teks pesanan",1800);
+};
+function rekap(){
+ const t=$("paste").value,sold={};let orders=0,cod=0;
+ t.split("\n").forEach(r=>{
+  if(r.includes("mau pre-order"))orders++;
+  if(r.startsWith("Pembayaran: bayar di tempat"))cod++;
+  const m=r.match(/^- (.+) x(\d+) =/);
+  if(m){const k=m[1].trim();sold[k]=(sold[k]||0)+Number(m[2]);}
+ });
+ let rows="",tot=0;
+ LINES.forEach(l=>{const n=sold[l.name]||0;if(n){tot+=n*l.price;rows+=`<div class="line"><span>${l.name}</span><span>${n} porsi</span></div>`;}});
+ $("rekap").innerHTML=orders||rows?`<div class="line"><span>Pesanan masuk</span><span>${orders}</span></div><div class="line"><span>Bayar di tempat</span><span>${cod}</span></div>${rows}<div class="line total"><span>Omzet</span><span>${rp(tot)}</span></div>`:`<p class="note" style="padding:8px 0">Belum ada pesan yang ditempel.</p>`;
+}
+$("paste").addEventListener("input",rekap);
+if(location.hash==="#admin")$("admin").hidden=false;
+rekap();
+update();
+</script>
+</body>
+</html>
